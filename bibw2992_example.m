@@ -57,8 +57,15 @@ display('***********************');
 %inferred formula
 x = round(sol.Solution.x);
 SolMat = getsolution(x,K,M,P);
+
 str = showformula(SolMat,K,M,Features);
 disp('Inferred logic model');
 disp(str);
 
 display('***********************');
+
+%% Apply model to (test) data
+labels = applymodel(x,X,K,M,P); %apply the trained model to the data
+labels = applymodel(x,X(1:10,:),K,M,P); %apply the trained model to the data - first ten samples
+
+
